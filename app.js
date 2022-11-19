@@ -16,4 +16,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(purchaseOrderRoutes);
 
+app.use((req, res, next) => {
+  res.redirect("/");
+});
+
 app.listen(3000);
