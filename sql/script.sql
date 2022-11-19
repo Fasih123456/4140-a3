@@ -91,4 +91,9 @@ CREATE TABLE `4140A3`.`ZCart116` (
   `qoh116` INT NULL,
   `price116` INT NULL,
   `PartFrom` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`partNo116`));
 
+ALTER TABLE `4140A3`.`ZCart116` 
+CHANGE COLUMN `partFrom` `partFrom` VARCHAR(45) NOT NULL ,
+ADD PRIMARY KEY (`partNo116`, `partFrom`);
+;
