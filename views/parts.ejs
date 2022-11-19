@@ -1,0 +1,144 @@
+<%- include('head.ejs') %>
+
+<main>
+  <form class="product-form" action="/admin/get-all" method="POST" id="form1">
+    <div id="form-control" class="form-control">
+      <h2>Get your Part No</h2>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h4>Note: Some Parts might not be displayed as they might be currently out of stock</h4>
+
+  <% if (parts[0].length > 0) { %>
+  <ul class="cart__item-list">
+    <% parts[0].forEach(p => { %>
+    <li class="cart__item">
+      <h2>Part Name: <%= p.partName116 %></h2>
+      <p>Current Price: <%= p.currentPrice116 %></p>
+      <p>Qunatity On Hand: <%= p.qoh116 %></p>
+      <h3>Add To Cart</h3>
+
+      <form class="product-form" action="/admin/add-to-cart" method="POST" id="form1">
+        <div
+          id="form-control"
+          class="form-control"
+          style="opacity: 0; height: 0px; margin: 0px; padding: 0px"
+        >
+          <input
+            type="number"
+            name="poId"
+            id="poId"
+            value="<%= p.partNo116 %>"
+            style="opacity: 0; height: 0px; margin: 0px; padding: 0px"
+          />
+        </div>
+        <div id="form-control" class="form-control">
+          <label>Enter Qunatity</label>
+          <input type="number" name="poQoh" id="poQoh" />
+        </div>
+
+        <div
+          id="form-control"
+          class="form-control"
+          style="opacity: 0; height: 0px; margin: 0px; padding: 0px"
+        >
+          <input
+            type="number"
+            name="price"
+            id="price"
+            value="<%= p.currentPrice116 %>"
+            style="opacity: 0; height: 0px"
+          />
+        </div>
+
+        <div
+          id="form-control"
+          class="form-control"
+          style="opacity: 0; height: 0px; margin: 0px; padding: 0px"
+        >
+          <input
+            type="text"
+            name="partfrom"
+            id="partfrom"
+            value="X"
+            style="opacity: 0; height: 0px"
+          />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </li>
+    <% }) %>
+  </ul>
+  <% } else { %> <% } %> <% if (parts[1].length > 0) { %>
+  <ul class="cart__item-list">
+    <% parts[1].forEach(p => { %>
+    <li class="cart__item">
+      <h2>Part Name: <%= p.partName116 %></h2>
+      <p>Current Price: <%= p.currentPrice116 %></p>
+      <p>Qunatity On Hand: <%= p.qoh116 %></p>
+      <form class="product-form" action="/admin/add-to-cart" method="POST" id="form1">
+        <div
+          id="form-control"
+          class="form-control"
+          style="opacity: 0; height: 0px; margin: 0px; padding: 0px"
+        >
+          <input
+            type="number"
+            name="poId"
+            id="poId"
+            value="<%= p.partNo116 %>"
+            style="opacity: 0; height: 0px; margin: 0px; padding: 0px"
+          />
+        </div>
+        <div id="form-control" class="form-control">
+          <label>Enter Qunatity</label>
+          <input type="number" name="poQoh" id="poQoh" />
+        </div>
+
+        <div
+          id="form-control"
+          class="form-control"
+          style="opacity: 0; height: 0px; margin: 0px; padding: 0px"
+        >
+          <input
+            type="number"
+            name="price"
+            id="price"
+            value="<%= p.currentPrice116 %>"
+            style="opacity: 0; height: 0px"
+          />
+        </div>
+
+        <div
+          id="form-control"
+          class="form-control"
+          style="opacity: 0; height: 0px; margin: 0px; padding: 0px"
+        >
+          <input
+            type="text"
+            name="partfrom"
+            id="partfrom"
+            value="X"
+            style="opacity: 0; height: 0px"
+          />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </li>
+
+    <% }) %>
+  </ul>
+  <% } else { %>
+  <h1>Please Search for a purchase order number</h1>
+  <% } %>
+</main>
+
+<script>
+  function validate(value) {
+    console.log(value);
+  }
+</script>

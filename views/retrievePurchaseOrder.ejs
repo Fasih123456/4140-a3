@@ -1,0 +1,45 @@
+<!--
+    Task to complete
+    1. Retireve list of parts from DB
+        a. No need to display parts
+        b. QOH should not be fetched
+    2. User should be able to retreive information about Purchase order just using PO
+        a. Method should retreive everything related in the lines table.
+    3. User should be able to see all the vendoers which a client is dealing with just using the client ID
+    4. User should be able to submit PO and all the lines inside of it
+    5. User should be able to get information about parts, PO and the lines on the PO using our interface.
+    6. User should be able to see information when they submit a PO
+-->
+<%- include('head.ejs') %>
+    <main>
+      <h1>Retireve your purchase Orders</h1>
+            <form class="product-form" action="/admin/retreive-po" method="POST" id="form1">
+        <div id="form-control" class="form-control">
+          <label for="poId">Purchase Order Number</label>
+          <input type="number" name="poId" id="poId" />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+
+            <% if (length > 0) { %>
+                <h2>Parts for Purchase Order: <%= purchaseOrders[0].poNo116 %></h2>
+                <ul class="cart__item-list">
+                    <% purchaseOrders.forEach(p => { %>
+                        <li class="cart__item">
+                            <h2>Part Number: <%= p.partNo116 %></h2>
+                            <p>Qunatity: <%= p.qty116 %></p>
+                            <p>Price Ordered: <%= p.priceOrdered116 %></p>
+                            <p>Total Price: <%= p.priceOrdered116 * p.qty116 %></p>
+
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <h1>Please Search for a purchase order number</h1>
+            <% } %>
+
+
+  </body>
+</html>

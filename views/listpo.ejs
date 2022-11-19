@@ -1,0 +1,14 @@
+<%- include('head.ejs') %>
+
+<main>
+  <h2>Lsit of purchase orders</h2>
+  <ul class="cart__item-list">
+    <% pos.forEach(p => { %>
+    <li class="cart__item">
+      <h2>Purchase Order Number: <%= p.poNo116 %></h2>
+      <p>Date Of Purchase: <%= p.dateOfPO116 %></p>
+      <p>Order Status: <%= p.status116 %></p>
+    </li>
+    <% }) %>
+  </ul>
+</main>

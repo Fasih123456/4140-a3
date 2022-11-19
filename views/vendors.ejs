@@ -1,0 +1,32 @@
+<%- include('head.ejs') %>
+    <main>
+      <h1>Get your vendor information</h1>
+            <form class="product-form" action="/admin/submit-clientid" method="POST" id="form1">
+        <div id="form-control" class="form-control">
+          <label for="clientId">Enter client Id</label>
+          <input type="number" name="clientId" id="clientId" />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+
+              <% if (vendors.length > 0) { %>
+                <ul class="cart__item-list">
+                    <% vendors.forEach(p => { %>
+                        <li class="cart__item">
+                            <h2>Purchase Order Number: <%= p.poNo116 %></h2>
+                            <p>Date Of Purchase: <%= p.dateOfPo116 %></p>
+                            <p>Status Of Delivery: <%= p.status116 %></p>
+
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <h1>Please Enter A client ID</h1>
+            <% } %>
+
+
+
+  </body>
+</html>
