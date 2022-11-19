@@ -10,7 +10,7 @@ module.exports = class Lines {
   }
 
   //Saves each line to the ZLine table
-  static save() {
+  save() {
     console.log("Line saved", this.poNo, this.lineNO, this.partNo, this.qty, this.priceOrdered);
 
     return database.execute(
@@ -20,7 +20,7 @@ module.exports = class Lines {
   }
 
   //Saves each line to the client table(XLines116 or YLines116 in this case)
-  static saveOtherClient(clientId) {
+  saveOtherClient(clientId) {
     return database.execute(
       `INSERT INTO ${clientId}Lines116 (poNo116, lineNo116, partNo116, qty116, priceOrdered116) VALUES (?, ?, ?, ?, ?)`,
       [this.poNo, this.lineNO, this.partNo, this.qty, this.priceOrdered]
